@@ -73,66 +73,74 @@ def transcription(path):
 
 def codigos(path):
     data = transcription(path)
-    longitud = len(data) #Longitus es de 78
+    longitud = len(data[0]) #Longitus es de 78 
+    longitud_interior = len(data[0][0])
     x = 0 
-    while x < longitud:
-        ##CODIGOS DE ACCIONES DE MANOS Y PIES
-        if data[x] == 'giro' and data[x + 1] == 'derecha':
-            data.insert(x+2, '[SW-TL-R]')
-        elif data[x] == 'giro' and data[x + 1] == 'izquierda':
-            data.insert(x+2, '[SW-TL-L]')
-        elif data[x] == 'subo' and data[x + 1] == 'marcha':
-            data.insert(x+2, '[GU]')
-        elif data[x] == 'bajo' and data[x + 1] == 'marcha':
-            data.insert(x+2, '[GD]')
-        elif data[x] == 'bajo' and data[x + 1] == 'de' and data[x + 2] == 'marcha':
-            data.insert(x+2, '[GD]')
-        elif data[x] == 'intermitente' and data[x + 1] == 'izquierda':
-            data.insert(x+2, '[LB-ON]')
-        elif data[x] == 'intermitente' and data[x + 1] == 'derecha':
-            data.insert(x+2, '[RB-ON]')
-        elif data[x] == 'piso' and data[x + 1] == 'embrague':
-            data.insert(x+2, '[G-ON]')
-        elif data[x] == 'suelto' and data[x + 1] == 'embrague':
-            data.insert(x+2, '[G-OFF]')
-        elif data[x] == 'piso' and data[x + 1] == 'acelerador':
-            data.insert(x+2, '[T-ON]')
-        elif data[x] == 'suelto' and data[x + 1] == 'acelerador':
-            data.insert(x+2, '[T-OFF]')
-        elif data[x] == 'piso' and data[x + 1] == 'freno':
-            data.insert(x+2, '[B-ON]')
-        elif data[x] == 'piso' and data[x + 1] == 'frenos':
-            data.insert(x+2, '[B-ON]')
-        elif data[x] == 'suelto' and data[x + 1] == 'freno':
-            data.insert(x+2, '[B-OFF]')
-        ##CODIGOS DE ESTIMULOS
-        elif data[x] == 'miro' and data[x + 1] == 'frente':
-            data.insert(x+2, '[FV]')
-        elif data[x] == 'mira' and data[x + 1] == 'enfrente':
-            data.insert(x+2, '[FV]')
-        elif data[x] == 'miro' and data[x + 1] == 'retrovisor' and data[x + 2] == 'central':
-            data.insert(x+3, '[FV-MIRROR]')
-        elif data[x] == 'mira' and data[x + 1] == 'retrovisor' and data[x + 2] == 'central':
-            data.insert(x+3, '[FV-MIRROR]')
-        elif data[x] == 'miro' and data[x + 1] == 'central':
-            data.insert(x+2, '[FV-MIRROR]')
-        elif data[x] == 'miro' and data[x + 1] == 'izquierda':
-            data.insert(x+2, '[LV]')
-        elif data[x] == 'retrovisor' and data[x + 1] == 'izquierda':
-            data.insert(x+2, '[LV-MIRROR]')
-        elif data[x] == 'miro' and data[x + 1] == 'retrovisor' and data[x + 2] == 'izquierda':
-            data.insert(x+3, '[LV-MIRROR]')
-        elif data[x] == 'miro' and data[x + 1] == 'frente' and data[x + 2] == 'izquierda':
-            data.insert(x+3, '[FLV]')
-        elif data[x] == 'miro' and data[x + 1] == 'derecha':
-            data.insert(x+2, '[RV]')
-        elif data[x] == 'miro' and data[x + 1] == 'retrovisor' and data[x + 2] == 'derecha':
-            data.insert(x+3, '[RV-MIRROR]')
-        elif data[x] == 'miro' and data[x + 1] == 'frente' and data[x + 2] == 'derecha':
-            data.insert(x+3, '[FRV]')
-        elif data[x] == 'miro' and data[x + 1] == 'detras':
-            data.insert(x+2, '[BV]')
-        x = x+1
+    y = 0  
+    #Data[y][x]
+    for i in 
+        while x < longitud_interior:
+            ##CODIGOS DE ACCIONES DE MANOS Y PIES
+            if data[y][x] == 'giro' and data[y][x + 1] == 'derecha':
+                data[y].insert(x+2, '[SW-TL-R]')
+            elif data[y][x] == 'giro' and data[y][x + 1] == 'izquierda':
+                data[y].insert(x+2, '[SW-TL-L]')
+            elif data[y][x] == 'subo' and data[y][x + 1] == 'marcha':
+                data[y].insert(x+2, '[GU]')
+            elif data[y][x] == 'bajo' and data[y][x + 1] == 'marcha':
+                data[y].insert(x+2, '[GD]')
+            elif data[y][x] == 'bajo' and data[y][x + 1] == 'de' and data[y][x + 2] == 'marcha':
+                data[y].insert(x+2, '[GD]')
+            elif data[y][x] == 'intermitente' and data[y][x + 1] == 'izquierda':
+                data[y].insert(x+2, '[LB-ON]')
+            elif data[y][x] == 'intermitente' and data[y][x + 1] == 'derecha':
+                data[y].insert(x+2, '[RB-ON]')
+            elif data[y][x] == 'piso' and data[y][x + 1] == 'embrague':
+                data[y].insert(x+2, '[G-ON]')
+            elif data[y][x] == 'suelto' and data[y][x + 1] == 'embrague':
+                data[y].insert(x+2, '[G-OFF]')
+            elif data[y][x] == 'piso' and data[y][x + 1] == 'acelerador':
+                data[y].insert(x+2, '[T-ON]')
+            elif data[y][x] == 'suelto' and data[y][x + 1] == 'acelerador':
+                data[y].insert(x+2, '[T-OFF]')
+            elif data[y][x] == 'piso' and data[y][x + 1] == 'freno':
+                data[y].insert(x+2, '[B-ON]')
+            elif data[y][x] == 'piso' and data[y][x + 1] == 'frenos':
+                data[y].insert(x+2, '[B-ON]')
+            elif data[y][x] == 'suelto' and data[y][x + 1] == 'freno':
+                data[y].insert(x+2, '[B-OFF]')
+            ##CODIGOS DE ESTIMULOS
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'frente':
+                data[y].insert(x+2, '[FV]')
+            elif data[y][x] == 'mira' and data[y][x + 1] == 'enfrente':
+                data[y].insert(x+2, '[FV]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'retrovisor' and data[y][x + 2] == 'central':
+                data[y].insert(x+3, '[FV-MIRROR]')
+            elif data[y][x] == 'mira' and data[y][x + 1] == 'retrovisor' and data[y][x + 2] == 'central':
+                data[y].insert(x+3, '[FV-MIRROR]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'central':
+                data[y].insert(x+2, '[FV-MIRROR]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'izquierda':
+                data[y].insert(x+2, '[LV]')
+            elif data[y][x] == 'retrovisor' and data[y][x + 1] == 'izquierda':
+                data[y].insert(x+2, '[LV-MIRROR]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'retrovisor' and data[y][x + 2] == 'izquierda':
+                data[y].insert(x+3, '[LV-MIRROR]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'frente' and data[y][x + 2] == 'izquierda':
+                data[y].insert(x+3, '[FLV]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'derecha':
+                data[y].insert(x+2, '[RV]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'retrovisor' and data[y][x + 2] == 'derecha':
+                data[y].insert(x+3, '[RV-MIRROR]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'frente' and data[y][x + 2] == 'derecha':
+                data[y].insert(x+3, '[FRV]')
+            elif data[y][x] == 'miro' and data[y][x + 1] == 'detras':
+                data[y].insert(x+2, '[BV]')
+            x = x+1
+            longitud_interior = len(data[y][x])
+        y = y+1
+        longitud = len(data[y])
+
     print(data)
     return data
         
