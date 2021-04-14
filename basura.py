@@ -7,12 +7,13 @@ import time
 import nltk
 import moviepy.editor as mp
 from pydub.utils import make_chunks
-from unidecode import unidecode
 
 
-def video_to_audio():
-    miVideo = mp.VideoFileClip("GOPR1286.mp4")
+
+def video_to_audio(video):
+    miVideo = mp.VideoFileClip(video)
     hola = miVideo.audio.write_audiofile("gopro.wav")
+    print("HECHO")
     return hola
     
 
@@ -22,7 +23,7 @@ def transcription(path):
     chunks = make_chunks(myaudio, chunk_length_ms) #Make chunks of one sec
 
     folder_name = "audio-chunks"
-            # create a directory to store the audio chunks
+         # create a directory to store the audio chunks
     if not os.path.isdir(folder_name):
         os.mkdir(folder_name)
 
@@ -37,7 +38,7 @@ def transcription(path):
     whole_text = ""
     lista_chunks = []
     file1 = open("chunks.txt","a")
-    for i, audio_chunk in enumerate(chunks, start=0):
+    for i, audio_chunk in enumerate(chunks, start=1):
         # export audio chunk and save it in
         # the `folder_name` directory.
         chunk_filename = os.path.join(folder_name, f"chunk{i}.wav")
@@ -47,32 +48,18 @@ def transcription(path):
             audio_listened = r.record(source)
             try:
                 text = r.recognize_google(audio_listened, language='es-ES')
-                print('chunk', i)
-                text = unidecode(text)
-                lista_chunks.insert(i, text)
-                file1.write(text)
-                file1.write("\n")
-                print(lista_chunks[i])
             except sr.UnknownValueError as e:
                 print("Error:", str(e))
             else:
                 text = f"{text} "
                 #print(chunk_filename, ":", text)
                 whole_text += text
-                
+                lista_chunks.insert(i, text)
+                file1.write(text)
+                file1.write("\n")
     ####################TOKENIZAR############################
-    print("Fichero escrito")
-    z = 0
-    data = [0]
-    while z < len(lista_chunks):
-        data.insert(z,  nltk.word_tokenize(lista_chunks[z+1])) 
-        z = z+1
-    print(data)
-    return data
-
-
-def codigos(path):
-    data = transcription(path)
+    #print("Fichero escrito")
+    data = nltk.word_tokenize(whole_text)
     longitud = len(data) #Longitus es de 78
     x = 0 
     while x < longitud:
@@ -133,20 +120,13 @@ def codigos(path):
         elif data[x] == 'miro' and data[x + 1] == 'detras':
             data.insert(x+2, '[BV]')
         x = x+1
-    print(data)
-    return data
-        
-        
-        
-        #if data[x] == 'hola' and data[x+1] == 'buenas':
-            #data.insert(2, '[FV]')
-    #print(data)
-
+        print(data)
+        return data #Puede que no haga falta
 
 
 
 if __name__ == "__main__":
-    #video_to_audio()
-    path = os.getcwd() + '\\' +  'gopro.wav' 
-    codigos(path)
+    audio = video_to_audio("GOPR1286.mp4")
+    path = os.getcwd() + '\\' + 'gopro.wav'
+    transcription(path)
 
