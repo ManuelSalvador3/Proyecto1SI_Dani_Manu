@@ -10,8 +10,8 @@ from pydub.utils import make_chunks
 from unidecode import unidecode
 
 
-def video_to_audio():
-    miVideo = mp.VideoFileClip("GOPR1286.mp4")
+def video_to_audio(path):
+    miVideo = mp.VideoFileClip(path)
     hola = miVideo.audio.write_audiofile("gopro.wav")
     return hola
     
